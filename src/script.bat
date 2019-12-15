@@ -6,11 +6,8 @@ setlocal EnableDelayedExpansion
 cls
 
 ::Accesses each subdirectory and checks for files needing merge
-for /R %cd% %%e in (.) do (
-    cd %%e
-    echo.
-    echo Currently in %%e
-    echo.
+for /R "%cd%" %%e in (.) do (
+    cd "%%e"
 
     if exist *.666* call :merge
 )
@@ -22,6 +19,9 @@ goto END
 ::Main subroutine
 :merge
 
+echo.
+echo Currently in %cd%
+echo.
 
 ::Find every unique filename with a .666xx extension
 set /a "ID=1"
